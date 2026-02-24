@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    color: #111111;
+    font-optical-sizing: auto;
+}
+
+#fondo {
+    position: relative;
+    width: 100vw;
+    /* full viewport width significa ancho de la ventana gráfica */
+    height: 100vh;
+    transition: background 2s ease;
+    overflow: hidden;
+    background: repeating-linear-gradient(to bottom,
+            #ffe29c 0vh,
+            #fff097 2vh,
+            #fff69e 4vh,
+        	#ffe2ac 10vh);
+    animation: caida 0.5s infinite linear;
+    will-change: background-position;
+}
+
+@keyframes caida {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 5vh;
+    }
+}
+
+#titulo {
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    text-align: center;
+}
+
+#aguja {
+    position: absolute;
+    width: 0.1%;
+    height: 1.7%;
+    background: #aaaaaa;
+    top: 40%;
+    right: 30%;
+    border-radius: 40% 40% 40% 40%;
+}
+
+#pajar {
+
+}
