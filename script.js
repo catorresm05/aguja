@@ -1,14 +1,51 @@
-const fondo = document.getElementById("pradera");
-const cantidad = 3000;
+const pradera = document.getElementById("pradera");
+const cantidad = 6000;
+const pajares = [];
 
 for (let i = 0; i < cantidad; i++) {
     const pajar = document.createElement("div");
     pajar.classList.add("pajar");
 
     pajar.style.left = Math.random() * 100 + "vw";
-
-    const altura = Math.random() * 95;
-    pajar.style.top = altura + "vh";
+    pajar.style.top = Math.random() * 89 + "vh";
 
     pradera.appendChild(pajar);
+    pajares.push(pajar);
 }
+
+const radio = 200; // radio de influencia en px
+const maxRotacion = 70; // grados máximos
+
+document.addEventListener("mousemove", (e) => {
+
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    pajares.forEach(pajar => {
+
+        const rect = pajar.getBoundingClientRect();
+        const centroX = rect.left + rect.width / 2;
+        const baseY = rect.bottom;
+
+        const dx = centroX - mouseX;
+        const dy = baseY - mouseY;
+
+        const distancia = Math.sqrt(dx * dx + dy * dy);
+
+        if (distancia < radio) {
+
+            const intensidad = 1 - (distancia / radio);
+            const rotacion = maxRotacion * intensidad;
+
+            if (dx > 0) {
+                pajar.style.transform = `rotate(${rotacion}deg)`;
+            } else {
+                pajar.style.transform = `rotate(-${rotacion}deg)`;
+            }
+
+        } else {
+            pajar.style.transform = "rotate(0deg)";
+        }
+    });
+
+});
