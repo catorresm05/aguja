@@ -1,5 +1,5 @@
 const pradera = document.getElementById("pradera");
-const cantidad = 5000;
+const cantidad = 4000;
 const pajares = [];
 
 for (let i = 0; i < cantidad; i++) {
@@ -14,7 +14,7 @@ for (let i = 0; i < cantidad; i++) {
 }
 
 const radio = 200; // radio de influencia en px
-const maxRotacion = 70; // grados máximos
+const maxRotacion = 70; // grados máximos hpña
 
 document.addEventListener("mousemove", (e) => {
 
